@@ -4,14 +4,14 @@ version: 0.0.5+6
 homepage: https://github.com/rafaelsetragni/awesome_notifications
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: ">=2.6.0 <3.0.0"
   flutter: ">=1.10.0"
 
 dependencies:
   flutter:
     sdk: flutter
 
-  platform: ^3.0.0
+  platform: ^2.2.0
   intl: ^0.16.0
 
 dev_dependencies:
