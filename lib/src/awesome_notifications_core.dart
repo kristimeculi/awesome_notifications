@@ -21,10 +21,8 @@ class AwesomeNotifications {
   static String rootNativePath;
 
   /// STREAM CREATION METHODS *********************************************
-
   // Streams are created so that app can respond to notification-related events since the plugin is initialised in the `main` function
-  final StreamController<String> _tokenStreamController =
-      StreamController<String>();
+  final StreamController<String> _tokenStreamController = StreamController<String>();
 
   final StreamController<ReceivedNotification>
       // ignore: close_sinks
@@ -116,8 +114,7 @@ class AwesomeNotifications {
   @visibleForTesting
   AwesomeNotifications.private(MethodChannel channel) : _channel = channel;
 
-  static final AwesomeNotifications _instance =
-      AwesomeNotifications.private(const MethodChannel(CHANNEL_FLUTTER_PLUGIN));
+  static final AwesomeNotifications _instance = AwesomeNotifications.private(const MethodChannel(CHANNEL_FLUTTER_PLUGIN));
 
   /// INITIALIZING METHODS *********************************************
 
@@ -125,8 +122,7 @@ class AwesomeNotifications {
   /// to be called at main.dart once.
   /// OBS: [defaultIcon] needs to be a Resource media type
   /// OBS 2: [channels] are updated if they already exists
-  Future<bool> initialize(
-      String defaultIcon, List<NotificationChannel> channels) async {
+  Future<bool> initialize(String defaultIcon, List<NotificationChannel> channels) async {
     WidgetsFlutterBinding.ensureInitialized();
 
     _channel.setMethodCallHandler(_handleMethod);
@@ -155,8 +151,7 @@ class AwesomeNotifications {
 
   /// Decode a drawable resource bytes into a Uint8List to be used in Flutter widgets
   Future<Uint8List> getDrawableData(String drawablePath) async {
-    var result2 = await _channel.invokeMethod(
-        CHANNEL_METHOD_GET_DRAWABLE_DATA, drawablePath);
+    var result2 = await _channel.invokeMethod(CHANNEL_METHOD_GET_DRAWABLE_DATA, drawablePath);
 
     if (result2 == null) return null;
 
@@ -297,8 +292,7 @@ class AwesomeNotifications {
 
   /// Remove a notification channel
   Future<bool> removeChannel(String channelKey) async {
-    final bool wasRemoved = await _channel.invokeMethod(
-        CHANNEL_METHOD_REMOVE_NOTIFICATION_CHANNEL, channelKey);
+    final bool wasRemoved = await _channel.invokeMethod(CHANNEL_METHOD_REMOVE_NOTIFICATION_CHANNEL, channelKey);
     return wasRemoved;
   }
 
